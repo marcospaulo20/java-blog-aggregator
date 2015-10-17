@@ -6,4 +6,6 @@ import br.marcospaulo.jpa.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 
+	Role findByName(String string);
+
 }

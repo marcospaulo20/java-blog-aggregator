@@ -2,12 +2,16 @@ package br.marcospaulo.jpa.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 public class Blog {
@@ -16,15 +20,18 @@ public class Blog {
 	@GeneratedValue
 	private Integer id;
 	
+	@Size(min = 1, message = "Name must be at least 1 character!")
 	private String name;
 	
+	@Size(min = 1, message = "Invalid URL!")
+	@URL(message = "Invalid URL!")
 	private String url;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "blog")
+	@OneToMany(mappedBy = "blog", cascade = CascadeType.REMOVE)
 	private List<Item> items;
 	
 	public User getUser() {

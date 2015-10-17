@@ -8,6 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md4PasswordEncoder;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.stereotype.Service;
 
 import br.marcospaulo.jpa.entity.Blog;
@@ -38,15 +41,18 @@ public class InitDbService {
 	@PostConstruct
 	public void init() {
 		Role roleUser = new Role();
-		roleUser.setName("USER_ROLE");
+		roleUser.setName("ROLE_USER");
 		roleRepository.save(roleUser);
 		
 		Role roleAdmin = new Role();
-		roleAdmin.setName("USER_ADMIN");
+		roleAdmin.setName("ROLE_ADMIN");
 		roleRepository.save(roleAdmin);
 		
 		User userAdmin = new User();
 		userAdmin.setName("admin");
+		userAdmin.setEnabled(true);
+		Md4PasswordEncoder encoder = new Md4PasswordEncoder();
+		userAdmin.setPassword(encoder.encodePassword("admin", ""));
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleAdmin);
 		roles.add(roleUser);
