@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.marcospaulo.jpa.entity.Blog;
-import br.marcospaulo.jpa.entity.User;
 import br.marcospaulo.jpa.service.BlogService;
 import br.marcospaulo.jpa.service.UserService;
 

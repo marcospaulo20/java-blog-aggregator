@@ -44,6 +44,10 @@ public class UserService {
 	public User findOne(Integer id) {
 		return userRepository.findOne(id);
 	}
+	
+	public User findOne(String username) {
+		return userRepository.findByName(username);
+	}
 
 	@Transactional
 	public User findOneWithBlogs(int id) {

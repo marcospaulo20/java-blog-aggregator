@@ -9,8 +9,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md4PasswordEncoder;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
-import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.stereotype.Service;
 
 import br.marcospaulo.jpa.entity.Blog;

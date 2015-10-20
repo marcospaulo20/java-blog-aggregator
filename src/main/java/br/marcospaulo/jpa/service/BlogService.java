@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import br.marcospaulo.jpa.annotation.P;
 import br.marcospaulo.jpa.entity.Blog;
 import br.marcospaulo.jpa.entity.User;
 import br.marcospaulo.jpa.repository.BlogRepository;
